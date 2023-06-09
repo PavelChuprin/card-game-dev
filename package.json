@@ -1,0 +1,29 @@
+{
+  "name": "game-dev",
+  "version": "1.0.0",
+  "description": "card game",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier —write .",
+    "lint:js": "eslint ./src/**/*.js",
+		"lint": "npm run lint:js",
+		"prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/PavelChuprin/game-dev.git)"
+  },
+  "author": "Pavel Chuprin",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.3",
+    "prettier": "^2.8.8"
+  }
+}
