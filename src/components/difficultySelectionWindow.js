@@ -1,6 +1,5 @@
 export const renderWindowDifficultySelection = (game) => {
-
-const windowDifficultySelectionHtml = `
+  const windowDifficultySelectionHtml = `
 <div class="container">
 <div class="level">
 	<div class="level-title">
@@ -27,6 +26,5 @@ const windowDifficultySelectionHtml = `
 </div>
 `;
 
-game.innerHTML = windowDifficultySelectionHtml;
-
-}
+  game.innerHTML = windowDifficultySelectionHtml;
+};

@@ -159,11 +159,16 @@ body {
 	color: #fff;
 }
 .timer__counter {
+	display: flex;
+	flex-direction: row;
 	font-style: normal;
 	font-weight: 400;
 	font-size: 64px;
 	line-height: 72px;
 	color: #fff;
+}
+.timer__minutes::after{
+	content: '.';
 }
 
 .body-game {
