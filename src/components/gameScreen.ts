@@ -1,12 +1,15 @@
-import { renderWindowWinnerOrLoser } from "./winnerOrLoserWindow.js";
+import { renderWindowWinnerOrLoser } from "./winnerOrLoserWindow";
 
-export const renderGameScreen = (game: HTMLElement, difficultyFactor: number) => {
+export const renderGameScreen = (
+  game: HTMLElement,
+  difficultyFactor: number
+) => {
   const arrCards: Array<string> = [];
 
-	interface Card {
-    value: string | undefined,
-    condition: Element | null
-}
+  interface Card {
+    value: string | undefined;
+    condition: Element | null;
+  }
 
   function suitCard(number: number) {
     if (number === 1) {
@@ -46,15 +49,15 @@ export const renderGameScreen = (game: HTMLElement, difficultyFactor: number) =>
   let suit: string | undefined = "";
   for (let i = 0; i < difficultyFactor / 2; i++) {
     do {
-				rank = rankCard(Math.floor(Math.random() * 9) + 6);
-				suit = suitCard(Math.floor(Math.random() * 4) + 1);
+      rank = rankCard(Math.floor(Math.random() * 9) + 6);
+      suit = suitCard(Math.floor(Math.random() * 4) + 1);
     } while (
       arrCards.includes(
         `<img data-value="${rank} ${suit}" class="game__card" src="static/img/${rank} ${suit}.png" alt="${rank} ${suit}">`
       )
     );
 
-    let card = `<img data-value="${rank} ${suit}" class="game__card" src="static/img/${rank} ${suit}.png" alt="${rank} ${suit}">`;
+    const card = `<img data-value="${rank} ${suit}" class="game__card" src="static/img/${rank} ${suit}.png" alt="${rank} ${suit}">`;
     arrCards.push(card);
 
     let index = Math.floor(Math.random() * difficultyFactor) + 1;
@@ -121,8 +124,8 @@ export const renderGameScreen = (game: HTMLElement, difficultyFactor: number) =>
       const sec = document.querySelector(".timer__seconds") as HTMLElement;
       const min = document.querySelector(".timer__minutes") as HTMLElement;
 
-      let second: string = "";
-      let minute: string = "";
+      let second = "";
+      let minute = "";
       setInterval(() => {
         second = (Number(sec.innerHTML) + 1).toString();
         if (Number(second) < 60) {
@@ -134,19 +137,21 @@ export const renderGameScreen = (game: HTMLElement, difficultyFactor: number) =>
         }
       }, 1000);
 
-      let firstCard = {
+      const firstCard = {
         value: "",
         condition: null,
       };
-      let secondCard = {
+      const secondCard = {
         value: "",
         condition: null,
       };
-      let statusUser;
+      let statusUser: boolean;
 
       const checkWinner = () => {
-        const cards: HTMLElement[] = Array.from(document.querySelectorAll(".game__card"));
-        for (let card of cards) {
+        const cards: HTMLElement[] = Array.from(
+          document.querySelectorAll(".game__card")
+        );
+        for (const card of cards) {
           if (card.dataset.status !== "open") {
             return false;
           }
@@ -159,8 +164,8 @@ export const renderGameScreen = (game: HTMLElement, difficultyFactor: number) =>
           statusUser = false;
           renderWindowWinnerOrLoser(game, statusUser, minute, second);
         } else {
-						firstCard.condition?.setAttribute("data-status", "open");
-						secondCard.condition?.setAttribute("data-status", "open");
+          firstCard.condition?.setAttribute("data-status", "open");
+          secondCard.condition?.setAttribute("data-status", "open");
           if (checkWinner()) {
             statusUser = true;
             renderWindowWinnerOrLoser(game, statusUser, minute, second);
@@ -175,17 +180,21 @@ export const renderGameScreen = (game: HTMLElement, difficultyFactor: number) =>
 
       cards.forEach((card) => {
         card.addEventListener("click", () => {
-					const htmlCard = card as HTMLElement || null;
+          const htmlCard = (card as HTMLElement) || null;
           if (htmlCard.dataset.status !== "open") {
-            htmlCard.setAttribute("src", `static/img/${htmlCard.dataset.value}.png`);
+            htmlCard.setAttribute(
+              "src",
+              `static/img/${htmlCard.dataset.value}.png`
+            );
             if (!firstCard.value) {
-								firstCard.value = htmlCard.dataset.value!; 
-								// "!" мы говорим TypeScript, что это значение никогда не будет null или undefined
-								firstCard.condition === null ? htmlCard : undefined;
+              // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
+              firstCard.value = htmlCard.dataset.value!;
+              firstCard.condition === null ? htmlCard : undefined;
             } else {
+              // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
               secondCard.value = htmlCard.dataset.value!;
               firstCard.condition === null ? htmlCard : undefined;
-              checkPairCards(firstCard, secondCard)
+              checkPairCards(firstCard, secondCard);
             }
           }
           console.log(htmlCard.dataset.value);

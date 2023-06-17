@@ -1,9 +1,14 @@
-	export const renderWindowWinnerOrLoser = (game: HTMLElement, statusUser: boolean, minute: string, second: string) => {
-	const windowWinnerOrLoserHtml = `
+export const renderWindowWinnerOrLoser = (
+  game: HTMLElement,
+  statusUser: boolean,
+  minute: string,
+  second: string
+) => {
+  const windowWinnerOrLoserHtml = `
 	<div class="container">
 		<div class="level">
 			<div class="level-smile">
-				<img src="/static/img/smile-${statusUser ? "winner" : "loser"}.png" alt=${
+				<img src="./static/img/smile-${statusUser ? "winner" : "loser"}.png" alt=${
     statusUser ? "winner" : "loser"
   }>
 			</div>
@@ -13,10 +18,12 @@
 			<div class="elapsed-time">
 				<p class="elapsed-time-text">Затраченное время</p>
 				<p class="elapsed-time-counter">
-				${minute}.${second}
+				${Number(minute) < 10 ? "0" + minute : minute}.${
+    Number(second) < 10 ? "0" + second : second
+  }
 				</p>
 			</div>
-				<button class="button-restart" type="submit">Игарть снова</button>
+				<button class="button-restart" type="submit">Играть снова</button>
 			</div>
 		</div>
 		</div>`;
