@@ -1,5 +1,43 @@
 import { renderWindowWinnerOrLoser } from "./winnerOrLoserWindow";
 
+export function suitCard(number: number) {
+  if (number === 1) {
+    return "пики";
+  } else if (number === 2) {
+    return "черви";
+  } else if (number === 3) {
+    return "бубны";
+  } else if (number === 4) {
+    return "крести";
+  } else {
+    return "ошибка";
+  }
+}
+
+export function rankCard(number: number) {
+  if (number === 6) {
+    return "6";
+  } else if (number === 7) {
+    return "7";
+  } else if (number === 8) {
+    return "8";
+  } else if (number === 9) {
+    return "9";
+  } else if (number === 10) {
+    return "10";
+  } else if (number === 11) {
+    return "валет";
+  } else if (number === 12) {
+    return "дама";
+  } else if (number === 13) {
+    return "король";
+  } else if (number === 14) {
+    return "туз";
+  } else {
+    return "ошибка";
+  }
+}
+
 export const renderGameScreen = (
   game: HTMLElement,
   difficultyFactor: number
@@ -8,41 +46,7 @@ export const renderGameScreen = (
 
   interface Card {
     value: string | undefined;
-    condition: Element | null;
-  }
-
-  function suitCard(number: number) {
-    if (number === 1) {
-      return "пики";
-    } else if (number === 2) {
-      return "черви";
-    } else if (number === 3) {
-      return "бубны";
-    } else if (number === 4) {
-      return "крести";
-    }
-  }
-
-  function rankCard(number: number) {
-    if (number === 6) {
-      return "6";
-    } else if (number === 7) {
-      return "7";
-    } else if (number === 8) {
-      return "8";
-    } else if (number === 9) {
-      return "9";
-    } else if (number === 10) {
-      return "10";
-    } else if (number === 11) {
-      return "валет";
-    } else if (number === 12) {
-      return "дама";
-    } else if (number === 13) {
-      return "король";
-    } else if (number === 14) {
-      return "туз";
-    }
+    condition: HTMLElement | null;
   }
 
   let rank: string | undefined = "";
@@ -137,11 +141,11 @@ export const renderGameScreen = (
         }
       }, 1000);
 
-      const firstCard = {
+      const firstCard: Card = {
         value: "",
         condition: null,
       };
-      const secondCard = {
+      const secondCard: Card = {
         value: "",
         condition: null,
       };
@@ -180,7 +184,9 @@ export const renderGameScreen = (
 
       cards.forEach((card) => {
         card.addEventListener("click", () => {
-          const htmlCard = (card as HTMLElement) || null;
+          const htmlCard = card as HTMLElement;
+          console.log(firstCard);
+          console.log(secondCard);
           if (htmlCard.dataset.status !== "open") {
             htmlCard.setAttribute(
               "src",
@@ -189,11 +195,11 @@ export const renderGameScreen = (
             if (!firstCard.value) {
               // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
               firstCard.value = htmlCard.dataset.value!;
-              firstCard.condition === null ? htmlCard : undefined;
+              firstCard.condition = htmlCard;
             } else {
               // eslint-disable-next-line  @typescript-eslint/no-non-null-assertion
               secondCard.value = htmlCard.dataset.value!;
-              firstCard.condition === null ? htmlCard : undefined;
+              secondCard.condition = htmlCard;
               checkPairCards(firstCard, secondCard);
             }
           }
