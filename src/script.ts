@@ -40,18 +40,15 @@ formDifficultySelection.addEventListener("submit", (event) => {
       .value === "easy"
   ) {
     renderGameScreen(game, 6);
-    console.log("Уровень сложности: easy");
   } else if (
     (<HTMLInputElement>document.querySelector('input[name="radio"]:checked'))
       .value === "medium"
   ) {
     renderGameScreen(game, 12);
-    console.log("Уровень сложности: medium");
   } else if (
     (<HTMLInputElement>document.querySelector('input[name="radio"]:checked'))
       .value === "hard"
   ) {
     renderGameScreen(game, 18);
-    console.log("Уровень сложности: hard");
   }
 });

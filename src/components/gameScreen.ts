@@ -57,11 +57,11 @@ export const renderGameScreen = (
       suit = suitCard(Math.floor(Math.random() * 4) + 1);
     } while (
       arrCards.includes(
-        `<img data-value="${rank} ${suit}" class="game__card" src="static/img/${rank} ${suit}.png" alt="${rank} ${suit}">`
+        `<img data-value="${rank} ${suit}" class="game-card" src="static/img/${rank} ${suit}.png" alt="${rank} ${suit}">`
       )
     );
 
-    const card = `<img data-value="${rank} ${suit}" class="game__card" src="static/img/${rank} ${suit}.png" alt="${rank} ${suit}">`;
+    const card = `<img data-value="${rank} ${suit}" class="game-card" src="static/img/${rank} ${suit}.png" alt="${rank} ${suit}">`;
     arrCards.push(card);
 
     let index = Math.floor(Math.random() * difficultyFactor) + 1;
@@ -78,7 +78,7 @@ export const renderGameScreen = (
     }
   }
 
-  const timer = (deadline: number) => {
+  const timerStartGame = (deadline: number) => {
     let time = deadline;
     const interval = setInterval(() => {
       time -= 1;
@@ -87,13 +87,13 @@ export const renderGameScreen = (
 			<div class="container-game">
 				<div class="header-game">
 					<div class="header-game-timer">
-						<div class="timer__text">
-							<div class="timer__text-min">min</div>
-							<div class="timer__text-sec">sec</div>
+						<div class="timer-text">
+							<div class="timer-text-min">min</div>
+							<div class="timer-text-sec">sec</div>
 						</div>
-						<div class="timer__counter">
-							<div class="timer__minutes">00</div>
-							<div class="timer__seconds">${time < 10 ? "0" + time : time}</div>
+						<div class="timer-counter">
+							<div class="timer-minutes">00</div>
+							<div class="timer-seconds">${time < 10 ? "0" + time : time}</div>
 						</div>
 					
 					</div>
@@ -119,14 +119,14 @@ export const renderGameScreen = (
       clearInterval(interval);
 
       //Переворачиваем карты рубашкой вверх
-      const cards = document.querySelectorAll(".game__card");
+      const cards = document.querySelectorAll(".game-card");
       cards.forEach((card) => {
         card.setAttribute("src", "static/img/shirt-card.png");
       });
 
       //Запуск секундомера с начала игры
-      const sec = document.querySelector(".timer__seconds") as HTMLElement;
-      const min = document.querySelector(".timer__minutes") as HTMLElement;
+      const sec = document.querySelector(".timer-seconds") as HTMLElement;
+      const min = document.querySelector(".timer-minutes") as HTMLElement;
 
       let second = "";
       let minute = "";
@@ -153,7 +153,7 @@ export const renderGameScreen = (
 
       const checkWinner = () => {
         const cards: HTMLElement[] = Array.from(
-          document.querySelectorAll(".game__card")
+          document.querySelectorAll(".game-card")
         );
         for (const card of cards) {
           if (card.dataset.status !== "open") {
@@ -185,8 +185,6 @@ export const renderGameScreen = (
       cards.forEach((card) => {
         card.addEventListener("click", () => {
           const htmlCard = card as HTMLElement;
-          console.log(firstCard);
-          console.log(secondCard);
           if (htmlCard.dataset.status !== "open") {
             htmlCard.setAttribute(
               "src",
@@ -203,10 +201,9 @@ export const renderGameScreen = (
               checkPairCards(firstCard, secondCard);
             }
           }
-          console.log(htmlCard.dataset.value);
         });
       });
     }, deadline * 1000);
   };
-  timer(6);
+  timerStartGame(6);
 };
