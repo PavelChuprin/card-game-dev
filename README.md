@@ -1,7 +1,7 @@
 <h1 align="center">Карточная игра "Запомни пары карт" на JS</h1>
 
 <p align="center">
-<img src="./src/static/img/card-game.gif" alt="card game demonstration" width="500px" height="500px">
+<img src="./src/static/img/card-game.gif" alt="card game demonstration" width="550px" height="400px">
 </p>
 
 <h2 align="left">Описание проекта</h2>
