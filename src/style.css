@@ -1,174 +1,235 @@
 @font-face {
-	font-family: "StratosSkyeng";
-	src: url("./fonts/stratosskyengweb-regular.woff2") format("woff2");
+  font-family: StratosSkyeng;
+  src: url("static/fonts/stratosskyengweb-regular.woff2") format("woff2");
 }
 
-*{
-	margin: 0;
-	padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	background-color: #004980;
-	font-family: 'StratosSkyeng';
+  background-color: #004980;
+  font-family: StratosSkyeng, sans-serif;
 }
 
 .container {
-	width: 100vw;
-	height: 100vh;
-	position: fixed;
-	top: 0;
-	left: 0;
-	display: flex;
-	align-items: center;
-	align-content: center;
-	justify-content: center;
-	overflow: auto;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
 }
 
 .level {
-	background-color: #C2F5FF;
-	border-radius: 12px;
-	width: 480px;
-	height: 459px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  background-color: #c2f5ff;
+  border-radius: 12px;
+  width: 480px;
+  height: 459px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 27px;
 }
 
 .level-title {
-	width: 208px;
-	padding-top: 52px;
-	padding-bottom: 48px;
+  width: 208px;
+  padding-top: 5px;
+  padding-bottom: 48px;
 }
 
 .level-title-text {
-	color: #004980;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 40px;
-	line-height: 48px;
-	text-align: center;
+  color: #004980;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+  padding-top: 52px;
 }
 
 .level-option-form {
-	display: flex;
-	flex-direction: row;
-	column-gap: 24px;
-	justify-content: center;
-	flex-wrap: wrap;
+  display: flex;
+  flex-flow: row wrap;
+  column-gap: 24px;
+  justify-content: center;
 }
 
 .level-option-input {
-	display: none;
+  display: none;
 }
 
 .level-option-text {
-	width: 98px;
-	height: 98px;
-	background: #FFFFFF;
-	border-radius: 12px;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 64px;
-	line-height: 72px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: #0080C1;
-	position: relative;
+  width: 98px;
+  height: 98px;
+  background: #fff;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0080c1;
+  position: relative;
 }
 
 .level-option-label {
-	display: inline-block;
+  display: inline-block;
 }
 
 .level-option-text:hover {
-	cursor: pointer;
-	box-shadow: 0px 0px 10px #004980;
-	transition: .5s;
+  cursor: pointer;
+  box-shadow: 0 0 10px #004980;
+  transition: 0.5s;
 }
 
 .level-option-text::before {
-	content: '';
-	position: absolute;
-	top: 0px;
-	right: 0px;
-	bottom: 0px;
-	left: 0px;
-	background: #0081c154;
-	border-radius: 12px;
-	border: #004980 solid 3px;
-	transform: scale(0);
-	transition: .5s;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #0081c154;
+  border-radius: 12px;
+  border: #004980 solid 3px;
+  transform: scale(0);
+  transition: 0.5s;
 }
 
 .level-option-input:checked + .level-option-text::before {
-	transform: scale(1);
+  transform: scale(1);
 }
 
 .button-container {
-	margin-top: 67px;
+  margin-top: 67px;
 }
 
-.button-start, .button-restart {
-	font-family: "StratosSkyeng";
-	width: 246px;
-	height: 50px;
-	background: #7AC100;
-	border-radius: 12px;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 24px;
-	text-align: center;
-	color: #FFFFFF;
-	border: none;
-	opacity: 1;
+.button-start,
+.button-restart {
+  font-family: StratosSkyeng, sans-serif;
+  width: 246px;
+  height: 50px;
+  background: #7ac100;
+  border-radius: 12px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  text-align: center;
+  color: #fff;
+  border: none;
+  opacity: 1;
 }
-.button-start:hover, .button-restart:hover{
-	cursor: pointer;
-	opacity: 0.9;
-	box-shadow: 0px 0px 10px #395a00;
-	transition: .3s;
+
+.button-start:hover,
+.button-restart:hover {
+  cursor: pointer;
+  opacity: 0.9;
+  box-shadow: 0 0 10px #395a00;
+  transition: 0.3s;
 }
-.button-start:active, .button-restart:active{
-	background: #395a00;
+
+.button-start:active,
+.button-restart:active {
+  background: #395a00;
 }
 
 .container-game {
-	margin: 24px;
-}
-.header-game {
-	width: 100%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
-	margin: 30px 0 46px;
+  margin: 24px;
 }
 
-.timer__text {
-	display: flex;
-	justify-content: end;
-	gap: 57px;
-	padding-right: 4px;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 32px;
-	color: #fff;
+.header-game {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 30px 0 46px;
 }
-.timer__counter {
-	font-style: normal;
-	font-weight: 400;
-	font-size: 64px;
-	line-height: 72px;
-	color: #fff;
+
+.timer-text {
+  display: flex;
+  justify-content: end;
+  gap: 57px;
+  padding-right: 4px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  color: #fff;
+}
+
+.timer-counter {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+  color: #fff;
+}
+
+.timer-minutes::after {
+  content: ".";
 }
 
 .body-game {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 15px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.level-smile {
+  padding-top: 30px;
+}
+
+.level-message {
+  padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.level-message-text {
+  color: #004980;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 48px;
+  text-align: center;
+}
+
+.elapsed-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.elapsed-time-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 10px;
+}
+
+.elapsed-time-counter {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 72px;
+}
+
+.game-card:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px #c2f5ff;
+}
+
+.game-card:active {
+  transform: scale(0.8);
+  transition: transform 0.3s;
 }
