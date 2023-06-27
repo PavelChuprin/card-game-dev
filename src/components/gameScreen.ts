@@ -10,7 +10,7 @@ export function suitCard(number: number) {
   } else if (number === 4) {
     return "крести";
   } else {
-    return "ошибка";
+    throw new Error("ошибка");
   }
 }
 
@@ -34,7 +34,7 @@ export function rankCard(number: number) {
   } else if (number === 14) {
     return "туз";
   } else {
-    return "ошибка";
+    throw new Error("ошибка");
   }
 }
 

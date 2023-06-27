@@ -2,8 +2,10 @@ import { test, expect, describe } from "@jest/globals";
 import { suitCard, rankCard } from "../src/components/gameScreen";
 
 describe("test function suitCard()", () => {
-  test("should return the string 'ошибка', if value = 0", () => {
-    expect(suitCard(0)).toBe("ошибка");
+  test("should return Error, if value = 0", () => {
+    expect(() => {
+      suitCard(0);
+    }).toThrow();
   });
   test("should return the string 'пики', if value = 1", () => {
     expect(suitCard(1)).toBe("пики");
@@ -19,11 +21,15 @@ describe("test function suitCard()", () => {
   });
 });
 describe("test function rankCard()", () => {
-  test("should return the string 'ошибка', if value = -1", () => {
-    expect(suitCard(-1)).toBe("ошибка");
+  test("should return Error, if value = -1", () => {
+    expect(() => {
+      suitCard(-1);
+    }).toThrow();
   });
-  test("should return the string 'ошибка', if value = 5", () => {
-    expect(suitCard(5)).toBe("ошибка");
+  test("should return Error, if value = 5", () => {
+    expect(() => {
+      suitCard(5);
+    }).toThrow();
   });
   test("should return the string '6', if value = 6", () => {
     expect(rankCard(6)).toBe("6");
@@ -52,7 +58,9 @@ describe("test function rankCard()", () => {
   test("should return the string 'туз', if value = 14", () => {
     expect(rankCard(14)).toBe("туз");
   });
-  test("should return the string 'ошибка', if value = 100", () => {
-    expect(rankCard(100)).toBe("ошибка");
+  test("should return Error, if value = 100", () => {
+    expect(() => {
+      suitCard(100);
+    }).toThrow();
   });
 });

@@ -10,10 +10,10 @@
     "start": "webpack-dev-server --open",
     "format": "prettier —write .",
     "lint:js": "eslint ./src/**/*.js",
+    "lint:ts": "tsc --noEmit",
 		"lint:css": "stylelint ./src/**/*.css",
     "lint": "npm run lint:ts && npm run lint:css",
-    "prepare": "husky install",
-    "lint:ts": "tsc --noEmit"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
